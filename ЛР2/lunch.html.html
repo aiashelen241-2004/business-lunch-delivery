@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Собрать ланч | Бизнес-Ланч Доставка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1 0 auto;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem 2rem;
+            width: 100%;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.2rem;
+            color: white;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        nav a.active {
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        section {
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+            color: white;
+        }
+
+        footer a {
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            color: #ffd700;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .dishes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .dish-card {
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .dish-card:hover {
+            border: 2px solid #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .dish-card:hover button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .dish-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .dish-card .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 5px 0;
+            color: #667eea;
+        }
+
+        .dish-card .dish-name {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 5px 0;
+            color: #333;
+            min-height: 3em;
+        }
+
+        .dish-card .weight {
+            color: #888;
+            margin: 5px 0;
+            font-size: 0.95rem;
+        }
+
+        .dish-card .add-btn {
+            background-color: #f0f0f0;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 800px) {
+            .dishes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            nav {
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                text-align: center;
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                font-size: 1.3rem;
+                width: 100%;
+                text-align: center;
+            }
+            .dishes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Бизнес-Ланч Доставка</h1>
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="lunch.html" class="active">Меню</a>
+            <a href="index.html#about">О нас</a>
+            <a href="index.html#contacts">Контакты</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Супы -->
+        <section class="dishes-section">
+            <h2>Выберите суп</h2>
+            <div class="dishes-grid">
+                <!-- Гаспачо -->
+                <div class="dish-card">
+                    <img src="Гаспачо.jpg" alt="Гаспачо">
+                    <p class="price">195₽</p>
+                    <p class="dish-name">Гаспачо</p>
+                    <p class="weight">350 г</p>
+                    <button class="add-btn">Добавить</button>
+                </div>
+                <!-- Грибной суп-пюре -->
+                <div class="dish-card">
+                    <img src="Грибной суп-пюре.jpg" alt="Грибной суп-пюре">
+                    <p class="price">185₽</p>
+                    <p class="dish-name">Грибной суп-пюре</p>
+                    <p class="weight">330 г</p>
+                    <button class="add-btn">Добавить</button>
+                </div>
+                <!-- Норвежский суп -->
+                <div class="dish-card">
+                    <img src="Норвежский суп.jpg" alt="Норвежский суп">
+                    <p class="price">270₽</p>
+                    <p class="dish-name">Норвежский суп</p>
+                    <p class="weight">330 г</p>
+                    <button class="add-btn">Добавить</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Главные блюда -->
+        <section class="dishes-section">
+            <h2>Выберите главное блюдо</h2>
+            <div class="dishes-grid">
+                <!-- Цезарь с курицей -->
+                <div class="dish-card">
+                    <img src="Цезарь с курицей.jpg" alt="Цезарь с курицей">
+                    <p class="price">350₽</p>
+                    <p class="dish-name">Цезарь с курицей</p>
+                    <p class="weight">250 г</p>
+                    <button class="add-btn">Добавить</button>
+                </div>
+                <!-- Куриная котлета с пюре -->
+                <div class="dish-card">
+                    <img src="Куриная котлета с пюре.jpg" alt="Куриная котлета с пюре">
+                    <p class="price">320₽</p>
+                    <p class="dish-name">Куриная котлета с пюре</p>
+                    <p class="weight">350 г</p>
+                    <button class="add-btn">Добавить</button>
+                </div>
+                <!-- Паста Карбонара -->
+                <div class="dish-card">
+                    <img src="Паста Карбонара.jpg" alt="Паста Карбонара">
+                    <p class="price">380₽</p>
+                    <p class="dish-name">Паста Карбонара</p>
+                    <p class="weight">300 г</p>
+                    <button class="add-btn">Добавить</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Напитки -->
+        <section class="dishes-section">
+            <h2>Выберите напиток</h2>
+            <div class="dishes-grid">
+                <!-- Апельсиновый сок -->
+                <div class="dish-card">
+                    <img src="Апельсиновый сок.jpg" alt="Апельсиновый сок">
+                    <p class="price">120₽</p>
+                    <p class="dish-name">Апельсиновый сок</p>
+                    <p class="weight">300 мл</p>
+                    <button class="add-btn">Добавить</button>
+                </div>
+                <!-- Яблочный сок -->
+                <div class="dish-card">
+                    <img src="Яблочный сок.jpg" alt="Яблочный сок">
+                    <p class="price">90₽</p>
+                    <p class="dish-name">Яблочный сок</p>
+                    <p class="weight">300 мл</p>
+                    <button class="add-btn">Добавить</button>
+                </div>
+                <!-- Морковный сок -->
+                <div class="dish-card">
+                    <img src="Морковный сок.jpg" alt="Морковный сок">
+                    <p class="price">110₽</p>
+                    <p class="dish-name">Морковный сок</p>
+                    <p class="weight">300 мл</p>
+                    <button class="add-btn">Добавить</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h2>Контакты</h2>
+            <p>📞 Телефон: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+            <p>✉️ Email: <a href="mailto:info@businesslunch.ru">info@businesslunch.ru</a></p>
+            <p>🏢 Адрес: г. Москва, ул. Тверская, д. 15</p>
+            <p>⏰ Время работы: Круглосуточно, без выходных</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">© 2024 Бизнес-Ланч Доставка. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

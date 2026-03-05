@@ -1,0 +1,112 @@
+/* تنسيقات صفحة تجميع الوجبة */
+
+/* الشبكة الرئيسية للاطعمة */
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+/* بطاقة كل طعام */
+.dish-card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px;
+    border-radius: 35px;
+    cursor: pointer;
+    background-color: white;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+    transition: all 0.3s ease;
+}
+
+.dish-card:hover {
+    border: 2px solid tomato;
+}
+
+.dish-card:hover button {
+    background-color: tomato;
+    color: white;
+}
+
+/* الصورة */
+.dish-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 35px;
+    margin-bottom: 15px;
+}
+
+/* السعر */
+.dish-card .price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+/* اسم الطبق */
+.dish-card .dish-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 5px 0;
+    min-height: 3em; /* لمحاذاة الأزرار */
+}
+
+/* الوزن */
+.dish-card .weight {
+    color: #666;
+    margin: 5px 0;
+}
+
+/* زر الإضافة */
+.dish-card .add-btn {
+    background-color: #f1eee9;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* للأجهزة اللوحية 800px فأقل */
+@media (max-width: 800px) {
+    .dishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    nav {
+        justify-content: space-between;
+    }
+    
+    nav a {
+        margin: 0;
+    }
+}
+
+/* للهواتف 600px فأقل */
+@media (max-width: 600px) {
+    h1 {
+        text-align: center;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav a {
+        font-size: calc(1.2rem + 4px);
+    }
+    
+    section h2 {
+        text-align: center;
+    }
+    
+    .dishes-grid {
+        grid-template-columns: 1fr;
+    }
+}
