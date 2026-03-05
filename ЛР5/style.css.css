@@ -1,0 +1,99 @@
+/* التعديلات على الـ navigation */
+nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem 0;
+    margin: 0;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    color: tomato;
+    background-color: rgba(255,255,255,0.1);
+}
+
+nav a.active {
+    color: tomato;
+    font-weight: 700;
+}
+
+/* لجعل الفوتر في الأسفل */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+/* تحديثات للصفحة الرئيسية */
+@media (max-width: 800px) {
+    .company-info img {
+        width: 500px;
+    }
+    
+    nav {
+        justify-content: space-between;
+    }
+    
+    nav a {
+        margin: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        text-align: center;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav a {
+        font-size: calc(1.2rem + 4px);
+    }
+    
+    section h2 {
+        text-align: center;
+    }
+    
+    .company-info img {
+        width: 100%;
+    }
+    
+    table {
+        font-size: calc(1rem - 2px);
+    }
+}
+
+@media (max-width: 400px) {
+    table {
+        font-size: calc(1rem - 4px);
+    }
+}

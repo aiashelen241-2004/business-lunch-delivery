@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бизнес-Ланч Доставка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1 0 auto;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem 2rem;
+            width: 100%;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.2rem;
+            color: white;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        nav a.active {
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        section {
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+            color: white;
+        }
+
+        footer a {
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            color: #ffd700;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .company-info img {
+            width: 50%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .company-info p {
+            flex: 1;
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .advantages ul {
+            list-style: none;
+            padding: 0 2rem;
+        }
+
+        .advantages li {
+            font-size: 1.2rem;
+            color: #444;
+            padding: 0.8rem 0;
+            border-bottom: 2px solid #f0f0f0;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .advantages li:before {
+            content: "✓";
+            color: #667eea;
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        .advantages li:last-child {
+            border-bottom: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        th, td {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        @media (max-width: 800px) {
+            .company-info {
+                flex-direction: column;
+            }
+            .company-info img {
+                width: 100%;
+            }
+            nav {
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                text-align: center;
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                font-size: 1.3rem;
+                width: 100%;
+                text-align: center;
+            }
+            .company-info img {
+                width: 100%;
+            }
+            table {
+                font-size: 0.9rem;
+            }
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            table {
+                font-size: 0.8rem;
+            }
+            th, td {
+                padding: 0.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Бизнес-Ланч Доставка</h1>
+        <nav>
+            <a href="index.html" class="active">Главная</a>
+            <a href="lunch.html">Меню</a>
+            <a href="checkout.html">Оформить заказ</a>
+            <a href="orders.html">Заказы</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about">
+            <h2>О компании</h2>
+            <div class="company-info">
+                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=1200" alt="Бизнес-ланч">
+                <p>
+                    Мы - ведущая служба доставки бизнес-ланчей в Москве. Более 10 лет мы радуем офисных сотрудников 
+                    вкусной и полезной едой. Наша миссия - сделать ваш обеденный перерыв максимально приятным и 
+                    комфортным. Мы используем только свежие продукты и соблюдаем все санитарные нормы.
+                </p>
+            </div>
+        </section>
+
+        <section class="advantages">
+            <h2>Наши преимущества</h2>
+            <ul>
+                <li><strong>Свежесть гарантируем:</strong> Готовим только после получения заказа</li>
+                <li><strong>Доставка 24/7:</strong> Круглосуточная доставка в любой район Москвы</li>
+                <li><strong>Скидки постоянным клиентам:</strong> Накопительная система скидок до 20%</li>
+                <li><strong>Бесплатная доставка:</strong> При заказе от 1000 рублей</li>
+            </ul>
+        </section>
+
+        <section class="popular">
+            <h2>Самые популярные блюда</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Блюдо</th>
+                        <th>Состав</th>
+                        <th>Вес (г)</th>
+                        <th>Цена (₽)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Цезарь с курицей</strong></td>
+                        <td>Куриное филе, салат айсберг, пармезан, соус, гренки</td>
+                        <td>250</td>
+                        <td>350</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Борщ с пампушками</strong></td>
+                        <td>Говядина, свекла, капуста, картофель, чесночные пампушки</td>
+                        <td>400</td>
+                        <td>280</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Куриная котлета с пюре</strong></td>
+                        <td>Куриный фарш, картофельное пюре, сливочный соус</td>
+                        <td>350</td>
+                        <td>320</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Паста Карбонара</strong></td>
+                        <td>Спагетти, бекон, сливки, пармезан, яйцо</td>
+                        <td>300</td>
+                        <td>380</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Овощное рагу</strong></td>
+                        <td>Кабачки, баклажаны, перец, томаты, пряные травы</td>
+                        <td>280</td>
+                        <td>250</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer id="contacts">
+        <div class="footer-content">
+            <h2>Контакты</h2>
+            <p>📞 Телефон: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+            <p>✉️ Email: <a href="mailto:info@businesslunch.ru">info@businesslunch.ru</a></p>
+            <p>🏢 Адрес: г. Москва, ул. Тверская, д. 15</p>
+            <p>⏰ Время работы: Круглосуточно, без выходных</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">© 2024 Бизнес-Ланч Доставка. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
